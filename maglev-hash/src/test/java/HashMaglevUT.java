@@ -59,11 +59,6 @@ public class HashMaglevUT {
         HashMaglev16Balancer<ServerInstance> hashMaglev16 = new HashMaglev16Balancer<>(instances, null, ServerInstance.comparator);
         hashSample(hashMaglev16);
 
-        ServerInstance[] arrInstance = new ServerInstance[instances.size()];
-
-        HashMaglevBalancer<ServerInstance> hashMaglev = new HashMaglevBalancer<>(instances.toArray(arrInstance), null, ServerInstance.comparator);
-        hashSample(hashMaglev);
-
         Collections.sort(instances,ServerInstance.comparator);
 
         hashMaglev16.addCells(new ArrayList<ServerInstance>(){{
@@ -94,14 +89,6 @@ public class HashMaglevUT {
 
     }
 
-    private void hashSample(HashMaglevBalancer<ServerInstance> hashMaglev) {
-        logger.info("ACX instance:" + hashMaglev.getInstance("ACX").getUniqueKey());
-        logger.info("ACX instance:" + hashMaglev.getInstance("ACX").getUniqueKey());
-
-        logger.info("LAM instance:" + hashMaglev.getInstance("LAM").getUniqueKey());
-        logger.info("LAM instance:" + hashMaglev.getInstance("LAM").getUniqueKey());
-
-    }
 
     private void hashSample(HashMaglev16Balancer<ServerInstance> maglevBalancerX) {
         logger.info("ACX instance:" + maglevBalancerX.getInstance("ACX").getUniqueKey());
