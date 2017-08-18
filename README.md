@@ -4,7 +4,7 @@
 
 This is a java implementation of maglev hash algorithm. Besides a few notable differences, it is mostly a transcript from https://github.com/kkdai/maglev, the author of which gave a very good explanation of of how it works.
 
-WARNING: This is NOT the exact version used in production and is provided "as-is". 
+WARNING: This is NOT the exact version used in production and is provided "as-is". Defects might exist.
 
 ## Implemetaion Differences
 
