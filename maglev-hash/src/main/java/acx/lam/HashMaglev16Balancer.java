@@ -158,7 +158,7 @@ public class HashMaglev16Balancer<T extends Cell> {
         long start = System.currentTimeMillis();
 
         if (removeCells == null || removeCells.size() == 0) {
-            logger.debug("addCells: nothing to remove");
+            logger.debug("remove cells: nothing to remove");
             return 0;
         }
 
