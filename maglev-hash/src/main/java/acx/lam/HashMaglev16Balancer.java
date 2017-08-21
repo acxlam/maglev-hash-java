@@ -38,6 +38,7 @@ public class HashMaglev16Balancer<T extends Cell> {
     private static class CellState<T> {
 
         //will not change
+        private int offset;
         private int skip;
         private char[] row;
 
