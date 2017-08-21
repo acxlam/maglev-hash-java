@@ -38,13 +38,12 @@ public class HashMaglev16Balancer<T extends Cell> {
     private static class CellState<T> {
 
         //will not change
+        private int skip;
         private char[] row;
-        private int last;
 
         //will change
         private int nextPos;
-        private int skip;
-        private int offset;
+        private int last;
 
         private void reset() {
             this.nextPos = 0;
@@ -100,7 +99,7 @@ public class HashMaglev16Balancer<T extends Cell> {
 
         logger.debug("start adding cells");
 
-        if(logger.isErrorEnabled()){
+        if(logger.isDebugEnabled()){
             cellsBackup = (ArrayList<Cell>) cells.clone();
         }
 
@@ -170,7 +169,7 @@ public class HashMaglev16Balancer<T extends Cell> {
         int removed = 0;
         logger.debug("start removing cells");
 
-        if(logger.isErrorEnabled()){
+        if(logger.isDebugEnabled()){
             cellsBackup = (ArrayList<Cell>) cells.clone();
         }
 
