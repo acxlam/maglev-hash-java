@@ -225,7 +225,7 @@ public class HashMaglev16Balancer<T extends Cell> {
         state.last = state.offset;
 
         char[] row = new char[mSizeLookup];
-        row[0] = (char) (++state.offset); // initialized first column ,store as +1
+        row[0] = (char) (state.offset + 1); // initialized first column ,store as +1
         state.row = row;
         return state;
     }
@@ -248,7 +248,7 @@ public class HashMaglev16Balancer<T extends Cell> {
                     if(cellsBackup.get(lookup[i]-1) != cells.get(tmpLookup[i]-1)){
                         changed++;
                         // uncomment to show disruptions
-                       // logger.debug("{}:{}->{}", i, cellsBackup.get(lookup[i]-1).getUniqueKey(), cells.get(tmpLookup[i]-1).getUniqueKey());
+                        // logger.debug("{}:{}->{}", i, cellsBackup.get(lookup[i]-1).getUniqueKey(), cells.get(tmpLookup[i]-1).getUniqueKey());
                     }
                 }
 
