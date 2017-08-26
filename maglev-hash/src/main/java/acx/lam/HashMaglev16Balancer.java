@@ -25,7 +25,7 @@ public class HashMaglev16Balancer<T extends Cell> {
     private Comparator<T> comparator;
 
     private ArrayList<T> cells;
-    private ArrayList<CellState<T>> cellStates;
+    private ArrayList<CellState> cellStates;
 
     private volatile char[] lookup;
     private static final HashFunction HASH_INPUT = Hashing.murmur3_32(0xaceaceac);
@@ -35,7 +35,7 @@ public class HashMaglev16Balancer<T extends Cell> {
     private  ArrayList<Cell> cellsBackup; //for add/remove stats only
     private  int lastDelta;                //for add/remove stats only
 
-    private static class CellState<T> {
+    private static class CellState {
 
         //will not change
         private int offset;
@@ -148,7 +148,7 @@ public class HashMaglev16Balancer<T extends Cell> {
     }
 
     private void resetCellState() {
-        for(CellState<T> state: cellStates){
+        for(CellState state: cellStates){
             state.reset();
         }
     }
