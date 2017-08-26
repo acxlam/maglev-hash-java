@@ -131,11 +131,11 @@ public class HashMaglev16Balancer<T extends Cell> {
                 resetCellState();
                 this.lastDelta = added;
                 this.generateLookupLazily();
+                printStats(start);
             }
         }
 
         logger.debug("{} cells appended  to the cell list", added);
-        logger.debug("lookup regen completed, total time used: {}ms ", (System.currentTimeMillis() - start));
         return added;
 
     }
@@ -196,11 +196,11 @@ public class HashMaglev16Balancer<T extends Cell> {
                 resetCellState();
                 this.lastDelta = -removed;
                 this.generateLookupLazily();
+                printStats(start);
             }
         }
 
         logger.debug("{} cells removed from the cell list", removed);
-        logger.debug("lookup regen done, total time used removing cells: {}ms ", (System.currentTimeMillis() - start));
         return removed;
     }
 
@@ -328,15 +328,20 @@ public class HashMaglev16Balancer<T extends Cell> {
             return perm;
         }
 
-        return --c;
+        state.last = (c - 1);
+        return state.last;
 
     }
 
     private void printStats(long start) {
 
+        if(!logger.isDebugEnabled()) {
+            return;
+        }
+
         logger.debug("time used {}ms", (System.currentTimeMillis() - start));
 
-       // printPermutationAndLookup(); //uncomment to see all the permutations and lookup
+        // printPermutationAndLookup(); //uncomment to see all the permutations and lookup
 
         int totalUsed = 0;
         for (CellState state : cellStates) {
